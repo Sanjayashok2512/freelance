@@ -1,13 +1,31 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view />
+  <v-app>
+    <v-main>
+      <!-- <HelloWorld/> -->
+      <NavBar/>
+      <router-view />
+    </v-main>
+  </v-app>
 </template>
 
+<script>
+import NavBar from "./components/NavBar.vue"; 
+// import HelloWorld from "./components/HelloWorld.vue"; 
+export default {
+  name: "App",
+  components: {
+    NavBar,
+    // HelloWorld, // Register the NavBar component
+  },
+
+  data: () => ({
+    //
+  }),
+};
+</script>
+
 <style>
-#app {
+/* #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -26,5 +44,5 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #42b983;
-}
+} */
 </style>
