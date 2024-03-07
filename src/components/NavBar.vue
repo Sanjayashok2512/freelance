@@ -1,56 +1,90 @@
 <!-- <a href="" target="_blank_">
               <img width="60" src="" alt="logo" />
             </a> -->
+
+<style scoped>
+h1 {
+  font-size: 17px;
+}
+.item-wrapper {
+  font-family: Montserrat;
+  font-size: 15px;
+  font-weight: 700;
+}
+.link{
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+.item-wrapper .title {
+  display: inline-block; /* Ensures the span only takes up as much width as needed */
+}
+</style>
 <template>
-  <div id="nav" elevation = 12>
-    <nav class="my_nav">
-      <v-container class="fill-height d-flex justify-center align-center px-0">
-        <v-col 
-        class="logo pl-6" 
-        cols="12" 
-        xs="12" 
-        sm="3" 
-        md="5"
-        lg="6" 
-        xl="4">
-          <h1>Grape </h1>
-          <!-- <img src="@/assets/grape.svg" alt="logo"> -->
-        </v-col>
-        <v-col
-          class="d-none d-sm-block "
-          cols="12"
-          xs="0"
-          sm="9"
-          md="7"
-          lg="6"
-          xl="6"
-        >
-          <v-row>
-            <v-col class="d-flex align-center px-0">
-              <router-link
-                class="link py-0"
-                v-for="(item, i) in links"
-                :key="i"
-                :to="generateDynamicRoute(item.url)"
-                @click="toggleVisibility(item)"
-              >
-                <div v-if="item.visible === true" style="font-family: Montserrat; font-size: 15px; font-weight: 700; ">
-                  <span
-                    class="underline_left"
-                   
-                  ></span>
-                  {{ item.title }}
-                  <span
-                    class="underline_right"
-                   
-                  ></span>
-                </div>
-              </router-link>
-              <button class="btn">Book a Call</button>
+  <div id="nav" elevation="12">
+    <v-app-bar :elevation="2">
+      <!-- <template v-slot:prepend>
+    <v-app-bar-nav-icon></v-app-bar-nav-icon>
+  </template> -->
+
+      <v-app-bar-title>
+        <nav class="my_nav">
+          <v-container
+          fluid
+            class="fill-height d-flex justify-center align-center px-0"
+          >
+            <v-col
+              class="logo pl-6"
+              cols="12"
+              xs="12"
+              sm="3"
+              md="5"
+              lg="6"
+              xl="4"
+            >
+              <h1>Luxury</h1>
+              <h1>TOURS & TRAVELS</h1>
             </v-col>
-          </v-row>
-        </v-col>
-        <!-- <v-col
+            <v-col
+              cols="12"
+              xs="0"
+              sm="9"
+              md="7"
+              lg="6"
+              xl="6"
+             
+              style="display: flex; justify-content: flex-end; align-items: center;"
+            >
+              <v-row>
+                <v-col class="d-flex  justify-end">
+                  <router-link
+                    class="link"
+                    v-for="(item, i) in links"
+                    :key="i"
+                    :to="generateDynamicRoute(item.url)"
+                    @click="toggleVisibility(item)"
+                  >
+                    <!-- <div 
+                      v-if="item.visible === true"
+                      style="
+                        font-family: Montserrat;
+                        font-size: 15px;
+                        font-weight: 700;
+                      "
+                    >
+                      <span class="underline_left"></span>
+                      {{ item.title }}
+                      <span class="underline_right"></span>
+                    </div> -->
+                    <div class="item-wrapper">
+                    <span class="underline_left"></span>
+                    <span class="title">{{ item.title }}</span>
+                    <span class="underline_right"></span>
+                  </div>
+                  </router-link>
+                </v-col>
+              </v-row>
+            </v-col>
+            <!-- <v-col
           class="action_btn d-none d-sm-block"
           cols="12"
           xs="0"
@@ -61,9 +95,11 @@
         >
           
         </v-col> -->
-      </v-container>
-    </nav>
-    <hr style="border : 1px solid grey">
+          </v-container>
+        </nav>
+      </v-app-bar-title>
+    </v-app-bar>
+    <!-- <hr style="border : 1px solid grey"> -->
   </div>
 </template>
 <script>
@@ -80,11 +116,10 @@ export default {
     return {
       links: [
         { title: "Home", url: "home", visible: false },
-        { title: "Our Works", url: "works", visible: true },
-        { title: "About", url: "about", visible: true },
-        { title: "Blog", url: "blog", visible: true },
+        { title: "Services", url: "works", visible: true },
+        { title: "About Us", url: "about", visible: true },
+        { title: "Images", url: "blog", visible: true },
         { title: "Contact Us", url: "contactus", visible: true },
-       
       ],
     };
   },
@@ -104,7 +139,6 @@ export default {
       });
     },
   },
- 
 };
 </script>
 <style>
@@ -217,8 +251,7 @@ export default {
 .btn:hover::before {
   left: 120%;
 }
-h1{
+h1 {
   font-family: Montserrat;
 }
 </style>
-
