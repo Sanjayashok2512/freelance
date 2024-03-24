@@ -2,20 +2,20 @@
   <v-app>
     <v-main>
       <!-- <HelloWorld/> -->
-      <NavBar/>
+      <HomeView/>
       <router-view />
     </v-main>
   </v-app>
 </template>
 
 <script>
-import NavBar from "./components/NavBar.vue"; 
+import HomeView from "./views/HomeView.vue"; 
 // import HelloWorld from "./components/HelloWorld.vue"; 
 export default {
   name: "App",
   components: {
-    NavBar,
-    // HelloWorld, // Register the NavBar component
+    HomeView,
+    // HelloWorld, // Register the HomeView component
   },
 
   data: () => ({
