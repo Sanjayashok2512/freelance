@@ -1,62 +1,5 @@
-<template>
-  <div>
-    <div id="app">
-      <v-app>
-        <v-main>
-          <v-row>
-            <v-col cols="12" 
-        xs="12" 
-        sm="3" 
-        md="5"
-        lg="6" 
-        xl="5"> </v-col>
-            <v-col
-            class="px-11"
-            cols="12"
-          xs="0"
-          sm="9"
-          md="7"
-          lg="6"
-          xl="5">
-              <h2>
-                You need design-done. <br />
-                Simply snag it!
-              </h2>
-              <div class="vertical_small_line"></div>
-              <p>
-                The significance of your brand's designs <br>
-                shouldn't be entrusted to unpredictable <br>
-                freelancers or costly creative firms. Instead, <br>
-                consider employing a knowledgeable, full-time <br> 
-                designer who is familiar with both you personally <br>
-                and your brand intimately.
-                
-              </p>
-              <button class="btn1"> Request a free proposal </button>
-            </v-col>
-          </v-row>
-        </v-main>
-      </v-app>
-    </div>
-  </div>
-  <!-- <HelloWorld /> -->
-</template>
-
-<script>
-import { defineComponent } from "vue";
-
-// Components
-// import HelloWorld from "../components/HelloWorld.vue";
-
-export default defineComponent({
-  name: "HomeView",
-
-  components: {
-    // HelloWorld,
-  },
-});
-</script>
-<style>
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 .btn1 {
   margin-top: 10px;
   width: 55%;
@@ -100,9 +43,74 @@ p {
   width: 60px;
   height: 8px;
   border-radius: 30px;
-  background-color: #CBFF5B;
+  background-color: #204a60;
   margin: 25px 0px 20px;
 }
 
 </style>
 
+]
+<template>
+  
+    <div id="app">
+      <v-app>
+        <v-layout>
+          <v-main>
+            <NavBar  @navigation = "link_url"/>
+            
+            <CarouselView ref="home"/>
+            <ServicesView ref="service"/>
+            <AboutView ref="about"/>
+            <ImageView ref="images"/>
+            <ContactUsView ref="contact"  @navigation1 = "link_url1"/>
+          </v-main>
+        </v-layout>
+       
+       
+      </v-app>
+    </div>
+  
+  <!-- <NavBar /> -->
+</template>
+
+<script>
+import { defineComponent } from "vue";
+
+import NavBar from "../components/NavBar.vue";
+import ServicesView from "../components/ServicesView.vue";
+import AboutView from "../components/AboutView.vue";
+import ImageView from "../components/ImageView.vue";
+import ContactUsView from "@/components/ContactUsView.vue";
+import CarouselView from "@/components/CarouselView.vue";
+
+export default defineComponent({
+  name: "HomeView",
+
+  components: {
+    NavBar,
+    CarouselView,
+    ServicesView,
+    AboutView,
+    ImageView,
+    ContactUsView,
+  },
+  methods: {
+    link_url(sectionRef) {
+  if (sectionRef && this.$refs[sectionRef]) {
+    this.$nextTick(() => {
+      this.$refs[sectionRef].$el.scrollIntoView({ behavior: "smooth" });
+    });
+  }
+},
+    link_url1(sectionRef) {
+  if (sectionRef && this.$refs[sectionRef]) {
+    this.$nextTick(() => {
+      this.$refs[sectionRef].$el.scrollIntoView({ behavior: "smooth" });
+    });
+  }
+}
+
+
+  }
+});
+</script>
